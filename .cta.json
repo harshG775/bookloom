@@ -1,22 +1,12 @@
 {
-  "projectName": "bookloom",
-  "mode": "file-router",
-  "typescript": true,
-  "packageManager": "pnpm",
-  "tailwind": true,
-  "addOnOptions": {},
-  "git": true,
-  "version": 1,
-  "framework": "react-cra",
-  "chosenAddOns": [
-    "eslint",
-    "nitro",
-    "start",
-    "shadcn",
-    "t3env",
-    "form",
-    "table",
-    "tanstack-query",
-    "store"
-  ]
+    "projectName": "bookloom",
+    "mode": "file-router",
+    "typescript": true,
+    "packageManager": "pnpm",
+    "tailwind": true,
+    "addOnOptions": {},
+    "git": true,
+    "version": 1,
+    "framework": "react-cra",
+    "chosenAddOns": ["eslint", "nitro", "start", "shadcn", "t3env", "form", "table", "tanstack-query", "store"]
 }
