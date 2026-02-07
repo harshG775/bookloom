@@ -3,7 +3,7 @@ import { createServerClient } from "@supabase/ssr"
 import { getCookies, setCookie } from "@tanstack/react-start/server"
 
 export function getSupabaseServerClient() {
-    return createServerClient(env.VITE_SUPABASE_URL, env.VITE_SUPABASE_PUBLISHABLE_KEY, {
+    return createServerClient(env.VITE_SUPABASE_URL, env.VITE_SUPABASE_API_KEY, {
         cookies: {
             getAll() {
                 return Object.entries(getCookies()).map(
