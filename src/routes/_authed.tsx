@@ -1,5 +1,5 @@
 import LoginOrSignUp from "@/components/auth/login-or-signup"
-import { getUserFn } from "@/lib/supabase/auth"
+import { getUserFn } from "@/server-functions/auth.serverFn"
 import { createFileRoute, Outlet, useRouteContext } from "@tanstack/react-router"
 
 export const Route = createFileRoute("/_authed")({

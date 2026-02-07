@@ -1,5 +1,5 @@
 import { createServerFn } from "@tanstack/react-start"
-import { getSupabaseServerClient } from "./server"
+import { getSupabaseServerClient } from "../lib/supabase/server"
 import z from "zod"
 
 export const getUserFn = createServerFn().handler(async () => {

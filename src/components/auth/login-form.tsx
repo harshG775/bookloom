@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import { logInFn } from "@/lib/supabase/auth"
+import { logInFn } from "@/server-functions/auth.serverFn"
 import { useRouter } from "@tanstack/react-router"
 
 type LoginFormProps = React.ComponentProps<"div"> & {

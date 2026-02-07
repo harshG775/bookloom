@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { signOutFn } from "@/lib/supabase/auth"
+import { signOutFn } from "@/server-functions/auth.serverFn"
 import { useRouter } from "@tanstack/react-router"
 import { createFileRoute } from "@tanstack/react-router"
 
