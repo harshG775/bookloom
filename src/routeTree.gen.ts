@@ -11,7 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AuthedRouteImport } from './routes/_authed'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AuthedProjectsRouteImport } from './routes/_authed/projects'
+import { Route as BooksIndexRouteImport } from './routes/books/index'
+import { Route as BooksBook_idRouteImport } from './routes/books/$book_id'
+import { Route as AuthedDashboardLibraryIndexRouteImport } from './routes/_authed/dashboard/library/index'
+import { Route as AuthedDashboardLibraryEbookRouteImport } from './routes/_authed/dashboard/library/$ebook'
 
 const AuthedRoute = AuthedRouteImport.update({
   id: '/_authed',
@@ -22,37 +25,82 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthedProjectsRoute = AuthedProjectsRouteImport.update({
-  id: '/projects',
-  path: '/projects',
-  getParentRoute: () => AuthedRoute,
+const BooksIndexRoute = BooksIndexRouteImport.update({
+  id: '/books/',
+  path: '/books/',
+  getParentRoute: () => rootRouteImport,
 } as any)
+const BooksBook_idRoute = BooksBook_idRouteImport.update({
+  id: '/books/$book_id',
+  path: '/books/$book_id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthedDashboardLibraryIndexRoute =
+  AuthedDashboardLibraryIndexRouteImport.update({
+    id: '/dashboard/library/',
+    path: '/dashboard/library/',
+    getParentRoute: () => AuthedRoute,
+  } as any)
+const AuthedDashboardLibraryEbookRoute =
+  AuthedDashboardLibraryEbookRouteImport.update({
+    id: '/dashboard/library/$ebook',
+    path: '/dashboard/library/$ebook',
+    getParentRoute: () => AuthedRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/projects': typeof AuthedProjectsRoute
+  '/books/$book_id': typeof BooksBook_idRoute
+  '/books/': typeof BooksIndexRoute
+  '/dashboard/library/$ebook': typeof AuthedDashboardLibraryEbookRoute
+  '/dashboard/library/': typeof AuthedDashboardLibraryIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/projects': typeof AuthedProjectsRoute
+  '/books/$book_id': typeof BooksBook_idRoute
+  '/books': typeof BooksIndexRoute
+  '/dashboard/library/$ebook': typeof AuthedDashboardLibraryEbookRoute
+  '/dashboard/library': typeof AuthedDashboardLibraryIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authed': typeof AuthedRouteWithChildren
-  '/_authed/projects': typeof AuthedProjectsRoute
+  '/books/$book_id': typeof BooksBook_idRoute
+  '/books/': typeof BooksIndexRoute
+  '/_authed/dashboard/library/$ebook': typeof AuthedDashboardLibraryEbookRoute
+  '/_authed/dashboard/library/': typeof AuthedDashboardLibraryIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/projects'
+  fullPaths:
+    | '/'
+    | '/books/$book_id'
+    | '/books/'
+    | '/dashboard/library/$ebook'
+    | '/dashboard/library/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/projects'
-  id: '__root__' | '/' | '/_authed' | '/_authed/projects'
+  to:
+    | '/'
+    | '/books/$book_id'
+    | '/books'
+    | '/dashboard/library/$ebook'
+    | '/dashboard/library'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authed'
+    | '/books/$book_id'
+    | '/books/'
+    | '/_authed/dashboard/library/$ebook'
+    | '/_authed/dashboard/library/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthedRoute: typeof AuthedRouteWithChildren
+  BooksBook_idRoute: typeof BooksBook_idRoute
+  BooksIndexRoute: typeof BooksIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -71,22 +119,45 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authed/projects': {
-      id: '/_authed/projects'
-      path: '/projects'
-      fullPath: '/projects'
-      preLoaderRoute: typeof AuthedProjectsRouteImport
+    '/books/': {
+      id: '/books/'
+      path: '/books'
+      fullPath: '/books/'
+      preLoaderRoute: typeof BooksIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/books/$book_id': {
+      id: '/books/$book_id'
+      path: '/books/$book_id'
+      fullPath: '/books/$book_id'
+      preLoaderRoute: typeof BooksBook_idRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authed/dashboard/library/': {
+      id: '/_authed/dashboard/library/'
+      path: '/dashboard/library'
+      fullPath: '/dashboard/library/'
+      preLoaderRoute: typeof AuthedDashboardLibraryIndexRouteImport
+      parentRoute: typeof AuthedRoute
+    }
+    '/_authed/dashboard/library/$ebook': {
+      id: '/_authed/dashboard/library/$ebook'
+      path: '/dashboard/library/$ebook'
+      fullPath: '/dashboard/library/$ebook'
+      preLoaderRoute: typeof AuthedDashboardLibraryEbookRouteImport
       parentRoute: typeof AuthedRoute
     }
   }
 }
 
 interface AuthedRouteChildren {
-  AuthedProjectsRoute: typeof AuthedProjectsRoute
+  AuthedDashboardLibraryEbookRoute: typeof AuthedDashboardLibraryEbookRoute
+  AuthedDashboardLibraryIndexRoute: typeof AuthedDashboardLibraryIndexRoute
 }
 
 const AuthedRouteChildren: AuthedRouteChildren = {
-  AuthedProjectsRoute: AuthedProjectsRoute,
+  AuthedDashboardLibraryEbookRoute: AuthedDashboardLibraryEbookRoute,
+  AuthedDashboardLibraryIndexRoute: AuthedDashboardLibraryIndexRoute,
 }
 
 const AuthedRouteWithChildren =
@@ -95,6 +166,8 @@ const AuthedRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthedRoute: AuthedRouteWithChildren,
+  BooksBook_idRoute: BooksBook_idRoute,
+  BooksIndexRoute: BooksIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
