@@ -3,6 +3,18 @@ const booksData = [
         id: "1",
         title: "Mastering React Architecture",
         slug: "mastering-react-architecture",
+        covers: [
+            {
+                id: "c1-1",
+                url: "/covers/react-architecture/front.jpg",
+                type: "front",
+            },
+            {
+                id: "c1-2",
+                url: "/covers/react-architecture/thumb.jpg",
+                type: "thumbnail",
+            },
+        ],
         author: {
             id: "a1",
             name: "Harsh Gaur",
@@ -29,14 +41,24 @@ const booksData = [
         createdAt: new Date(),
         updatedAt: new Date(),
     },
+
     {
         id: "2",
         title: "TypeScript Deep Dive",
         slug: "typescript-deep-dive",
-        author: {
-            id: "a2",
-            name: "Ankit Sharma",
-        },
+        covers: [
+            {
+                id: "c2-1",
+                url: "/covers/typescript/front.jpg",
+                type: "front",
+            },
+            {
+                id: "c2-2",
+                url: "/covers/typescript/thumb.jpg",
+                type: "thumbnail",
+            },
+        ],
+        author: { id: "a2", name: "Ankit Sharma" },
         metadata: {
             description: "Comprehensive guide to mastering TypeScript.",
             totalPages: 280,
@@ -44,11 +66,7 @@ const booksData = [
             category: "Programming",
             tags: ["TypeScript", "JavaScript"],
         },
-        pricing: {
-            price: 699,
-            currency: "INR",
-            isFree: false,
-        },
+        pricing: { price: 699, currency: "INR", isFree: false },
         file: {
             storageKey: "books/typescript-deep-dive/full.pdf",
             previewStorageKey: "books/typescript-deep-dive/preview.pdf",
@@ -59,14 +77,16 @@ const booksData = [
         createdAt: new Date(),
         updatedAt: new Date(),
     },
+
     {
         id: "3",
         title: "Node.js Production Handbook",
         slug: "nodejs-production-handbook",
-        author: {
-            id: "a3",
-            name: "Rahul Verma",
-        },
+        covers: [
+            { id: "c3-1", url: "/covers/node/front.jpg", type: "front" },
+            { id: "c3-2", url: "/covers/node/thumb.jpg", type: "thumbnail" },
+        ],
+        author: { id: "a3", name: "Rahul Verma" },
         metadata: {
             description: "Deploy, scale and optimize Node.js apps.",
             totalPages: 350,
@@ -74,11 +94,7 @@ const booksData = [
             category: "Backend",
             tags: ["Node.js", "Scaling", "DevOps"],
         },
-        pricing: {
-            price: 899,
-            currency: "INR",
-            isFree: false,
-        },
+        pricing: { price: 899, currency: "INR", isFree: false },
         file: {
             storageKey: "books/nodejs-production/full.pdf",
             previewStorageKey: "books/nodejs-production/preview.pdf",
@@ -89,14 +105,16 @@ const booksData = [
         createdAt: new Date(),
         updatedAt: new Date(),
     },
+
     {
         id: "4",
         title: "UI Design Systems with Tailwind",
         slug: "ui-design-systems-tailwind",
-        author: {
-            id: "a4",
-            name: "Priya Kapoor",
-        },
+        covers: [
+            { id: "c4-1", url: "/covers/design/front.jpg", type: "front" },
+            { id: "c4-2", url: "/covers/design/thumb.jpg", type: "thumbnail" },
+        ],
+        author: { id: "a4", name: "Priya Kapoor" },
         metadata: {
             description: "Build consistent and scalable design systems.",
             totalPages: 210,
@@ -104,11 +122,7 @@ const booksData = [
             category: "Design",
             tags: ["Tailwind", "UI", "Design Systems"],
         },
-        pricing: {
-            price: 599,
-            currency: "INR",
-            isFree: false,
-        },
+        pricing: { price: 599, currency: "INR", isFree: false },
         file: {
             storageKey: "books/design-systems/full.pdf",
             previewStorageKey: "books/design-systems/preview.pdf",
@@ -119,14 +133,16 @@ const booksData = [
         createdAt: new Date(),
         updatedAt: new Date(),
     },
+
     {
         id: "5",
         title: "MongoDB for Modern Apps",
         slug: "mongodb-modern-apps",
-        author: {
-            id: "a5",
-            name: "Neha Singh",
-        },
+        covers: [
+            { id: "c5-1", url: "/covers/mongodb/front.jpg", type: "front" },
+            { id: "c5-2", url: "/covers/mongodb/thumb.jpg", type: "thumbnail" },
+        ],
+        author: { id: "a5", name: "Neha Singh" },
         metadata: {
             description: "Schema design and performance tuning in MongoDB.",
             totalPages: 260,
@@ -134,11 +150,7 @@ const booksData = [
             category: "Database",
             tags: ["MongoDB", "NoSQL"],
         },
-        pricing: {
-            price: 749,
-            currency: "INR",
-            isFree: false,
-        },
+        pricing: { price: 749, currency: "INR", isFree: false },
         file: {
             storageKey: "books/mongodb/full.pdf",
             previewStorageKey: "books/mongodb/preview.pdf",
@@ -149,14 +161,16 @@ const booksData = [
         createdAt: new Date(),
         updatedAt: new Date(),
     },
+
     {
         id: "6",
         title: "Getting Started with PostgreSQL",
         slug: "getting-started-postgresql",
-        author: {
-            id: "a6",
-            name: "Amit Patel",
-        },
+        covers: [
+            { id: "c6-1", url: "/covers/postgresql/front.jpg", type: "front" },
+            { id: "c6-2", url: "/covers/postgresql/thumb.jpg", type: "thumbnail" },
+        ],
+        author: { id: "a6", name: "Amit Patel" },
         metadata: {
             description: "A beginner-friendly introduction to PostgreSQL.",
             totalPages: 190,
@@ -164,11 +178,7 @@ const booksData = [
             category: "Database",
             tags: ["PostgreSQL", "SQL"],
         },
-        pricing: {
-            price: 0,
-            currency: "INR",
-            isFree: true,
-        },
+        pricing: { price: 0, currency: "INR", isFree: true },
         file: {
             storageKey: "books/postgresql/full.pdf",
             previewStorageKey: null,
@@ -179,14 +189,16 @@ const booksData = [
         createdAt: new Date(),
         updatedAt: new Date(),
     },
+
     {
         id: "7",
         title: "Fullstack SaaS Blueprint",
         slug: "fullstack-saas-blueprint",
-        author: {
-            id: "a7",
-            name: "Rohan Mehta",
-        },
+        covers: [
+            { id: "c7-1", url: "/covers/saas/front.jpg", type: "front" },
+            { id: "c7-2", url: "/covers/saas/thumb.jpg", type: "thumbnail" },
+        ],
+        author: { id: "a7", name: "Rohan Mehta" },
         metadata: {
             description: "Build and scale a SaaS product from scratch.",
             totalPages: 400,
@@ -194,11 +206,7 @@ const booksData = [
             category: "Business",
             tags: ["SaaS", "Startup", "Architecture"],
         },
-        pricing: {
-            price: 999,
-            currency: "INR",
-            isFree: false,
-        },
+        pricing: { price: 999, currency: "INR", isFree: false },
         file: {
             storageKey: "books/saas-blueprint/full.pdf",
             previewStorageKey: "books/saas-blueprint/preview.pdf",
@@ -209,14 +217,16 @@ const booksData = [
         createdAt: new Date(),
         updatedAt: new Date(),
     },
+
     {
         id: "8",
         title: "Redis Caching Strategies",
         slug: "redis-caching-strategies",
-        author: {
-            id: "a8",
-            name: "Karan Malhotra",
-        },
+        covers: [
+            { id: "c8-1", url: "/covers/redis/front.jpg", type: "front" },
+            { id: "c8-2", url: "/covers/redis/thumb.jpg", type: "thumbnail" },
+        ],
+        author: { id: "a8", name: "Karan Malhotra" },
         metadata: {
             description: "Improve performance with Redis caching techniques.",
             totalPages: 230,
@@ -224,11 +234,7 @@ const booksData = [
             category: "Backend",
             tags: ["Redis", "Caching", "Performance"],
         },
-        pricing: {
-            price: 649,
-            currency: "INR",
-            isFree: false,
-        },
+        pricing: { price: 649, currency: "INR", isFree: false },
         file: {
             storageKey: "books/redis/full.pdf",
             previewStorageKey: "books/redis/preview.pdf",
@@ -240,9 +246,15 @@ const booksData = [
         updatedAt: new Date(),
     },
 ]
+
 type createBookPayload = {
     title: string
     slug: string
+    covers: {
+        id: string
+        url: string
+        type: "front" | "thumbnail"
+    }[]
     author: {
         id: string
         name: string
@@ -315,12 +327,7 @@ export const getBooksServerFn = async ({ page, perPage }: { page: number; perPag
     const endIndex = startIndex + perPage
     return booksData.slice(startIndex, endIndex)
 }
-export const getAllUserPublicBooksServerFn = async ({ page, perPage }: { page: number; perPage: number }) => {
-    const startIndex = (page - 1) * perPage
-    const endIndex = startIndex + perPage
-    return booksData.slice(startIndex, endIndex)
-}
-export const getUserPurchasedByBookIdServerFn = async (id: string) => {
+export const getUserPurchasedBookByBookIdServerFn = async (id: string) => {
     const book = booksData.find((book) => book.id === id)
     if (!book) throw new Error("Book not found")
     return book

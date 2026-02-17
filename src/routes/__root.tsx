@@ -66,7 +66,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
                 <HeadContent />
             </head>
             <body className="flex flex-col">
-                <Header />
+                {/*<Header />*/}
                 {children}
                 <TanStackDevtools
                     config={{

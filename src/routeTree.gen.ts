@@ -13,6 +13,8 @@ import { Route as AuthedRouteImport } from './routes/_authed'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BooksIndexRouteImport } from './routes/books/index'
 import { Route as BooksBook_idRouteImport } from './routes/books/$book_id'
+import { Route as AdminBooksIndexRouteImport } from './routes/admin/books/index'
+import { Route as AdminBooksNewIndexRouteImport } from './routes/admin/books/new/index'
 import { Route as AuthedDashboardLibraryIndexRouteImport } from './routes/_authed/dashboard/library/index'
 import { Route as AuthedDashboardLibraryEbookRouteImport } from './routes/_authed/dashboard/library/$ebook'
 
@@ -35,6 +37,16 @@ const BooksBook_idRoute = BooksBook_idRouteImport.update({
   path: '/books/$book_id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminBooksIndexRoute = AdminBooksIndexRouteImport.update({
+  id: '/admin/books/',
+  path: '/admin/books/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminBooksNewIndexRoute = AdminBooksNewIndexRouteImport.update({
+  id: '/admin/books/new/',
+  path: '/admin/books/new/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthedDashboardLibraryIndexRoute =
   AuthedDashboardLibraryIndexRouteImport.update({
     id: '/dashboard/library/',
@@ -52,15 +64,19 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/books/$book_id': typeof BooksBook_idRoute
   '/books/': typeof BooksIndexRoute
+  '/admin/books/': typeof AdminBooksIndexRoute
   '/dashboard/library/$ebook': typeof AuthedDashboardLibraryEbookRoute
   '/dashboard/library/': typeof AuthedDashboardLibraryIndexRoute
+  '/admin/books/new/': typeof AdminBooksNewIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/books/$book_id': typeof BooksBook_idRoute
   '/books': typeof BooksIndexRoute
+  '/admin/books': typeof AdminBooksIndexRoute
   '/dashboard/library/$ebook': typeof AuthedDashboardLibraryEbookRoute
   '/dashboard/library': typeof AuthedDashboardLibraryIndexRoute
+  '/admin/books/new': typeof AdminBooksNewIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -68,8 +84,10 @@ export interface FileRoutesById {
   '/_authed': typeof AuthedRouteWithChildren
   '/books/$book_id': typeof BooksBook_idRoute
   '/books/': typeof BooksIndexRoute
+  '/admin/books/': typeof AdminBooksIndexRoute
   '/_authed/dashboard/library/$ebook': typeof AuthedDashboardLibraryEbookRoute
   '/_authed/dashboard/library/': typeof AuthedDashboardLibraryIndexRoute
+  '/admin/books/new/': typeof AdminBooksNewIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -77,23 +95,29 @@ export interface FileRouteTypes {
     | '/'
     | '/books/$book_id'
     | '/books/'
+    | '/admin/books/'
     | '/dashboard/library/$ebook'
     | '/dashboard/library/'
+    | '/admin/books/new/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/books/$book_id'
     | '/books'
+    | '/admin/books'
     | '/dashboard/library/$ebook'
     | '/dashboard/library'
+    | '/admin/books/new'
   id:
     | '__root__'
     | '/'
     | '/_authed'
     | '/books/$book_id'
     | '/books/'
+    | '/admin/books/'
     | '/_authed/dashboard/library/$ebook'
     | '/_authed/dashboard/library/'
+    | '/admin/books/new/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -101,6 +125,8 @@ export interface RootRouteChildren {
   AuthedRoute: typeof AuthedRouteWithChildren
   BooksBook_idRoute: typeof BooksBook_idRoute
   BooksIndexRoute: typeof BooksIndexRoute
+  AdminBooksIndexRoute: typeof AdminBooksIndexRoute
+  AdminBooksNewIndexRoute: typeof AdminBooksNewIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -131,6 +157,20 @@ declare module '@tanstack/react-router' {
       path: '/books/$book_id'
       fullPath: '/books/$book_id'
       preLoaderRoute: typeof BooksBook_idRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/books/': {
+      id: '/admin/books/'
+      path: '/admin/books'
+      fullPath: '/admin/books/'
+      preLoaderRoute: typeof AdminBooksIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/books/new/': {
+      id: '/admin/books/new/'
+      path: '/admin/books/new'
+      fullPath: '/admin/books/new/'
+      preLoaderRoute: typeof AdminBooksNewIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authed/dashboard/library/': {
@@ -168,6 +208,8 @@ const rootRouteChildren: RootRouteChildren = {
   AuthedRoute: AuthedRouteWithChildren,
   BooksBook_idRoute: BooksBook_idRoute,
   BooksIndexRoute: BooksIndexRoute,
+  AdminBooksIndexRoute: AdminBooksIndexRoute,
+  AdminBooksNewIndexRoute: AdminBooksNewIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
