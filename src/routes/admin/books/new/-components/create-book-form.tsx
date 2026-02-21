@@ -37,14 +37,14 @@ import { useForm } from "@tanstack/react-form"
 import { useState } from "react"
 
 const formSchema = z.object({
-    bookTitle: z.string().min(3),
-    subTitle: z.string().optional(),
-    slug: z.string().min(3),
-    author: z.string().min(3),
-    language: z.string().min(3),
-    categories: z.array(z.string()).min(1, "categories are required"),
-    description: z.string().min(3),
-    summery: z.string().min(3),
+    bookTitle: z.string().min(3, "title is required"),
+    subTitle: z.string(),
+    slug: z.string().min(3, "slug is required"),
+    author: z.string().min(3, "author is required"),
+    languages: z.any(),
+    categories: z.array(z.any()).min(1, "categories are required"),
+    description: z.string().min(3, "description is required"),
+    summery: z.string().min(3, "summery is required"),
 })
 const languages = [
     // coss.com
@@ -70,7 +70,7 @@ const categories = [
 ]
 
 export function CreateBookForm() {
-    const [currentStep, setCurrentStep] = useState(0)
+    const [currentStep, setCurrentStep] = useState(1)
 
     const form = useForm({
         defaultValues: {
@@ -79,14 +79,16 @@ export function CreateBookForm() {
             subTitle: "",
             slug: "",
             author: "",
-            language: "hi",
-            categories: "",
+            languages: languages[0] as { label: string; value: string },
+            categories: [] as { label: string; value: string }[],
             description: "",
             summery: "",
         },
-        // validators: {
-        //     onSubmit: formSchema,
-        // },
+        validators: {
+            onBlur: formSchema,
+            onChange: formSchema,
+            onSubmit: formSchema,
+        },
         onSubmit: async ({ value }) => {
             console.log(value)
             alert("Form submitted successfully")
@@ -143,7 +145,6 @@ export function CreateBookForm() {
                                         )
                                     }}
                                 />
-
                                 <form.Field
                                     name="subTitle"
                                     children={(field) => {
@@ -213,7 +214,7 @@ export function CreateBookForm() {
                                     }}
                                 />
                                 <form.Field
-                                    name="language"
+                                    name="languages"
                                     children={(field) => {
                                         const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
                                         return (
@@ -224,7 +225,7 @@ export function CreateBookForm() {
                                                     id={field.name}
                                                     name={field.name}
                                                     value={field.state.value}
-                                                    onValueChange={(value) => field.handleChange(value || "hi")}
+                                                    onValueChange={(value) => field.handleChange(value || languages[0])}
                                                     aria-invalid={isInvalid}
                                                 >
                                                     <SelectTrigger>
@@ -249,7 +250,15 @@ export function CreateBookForm() {
                                         return (
                                             <Field data-invalid={isInvalid}>
                                                 <FieldLabel htmlFor={field.name}>Categories</FieldLabel>
-                                                <Combobox items={categories} multiple required>
+                                                <Combobox
+                                                    items={categories}
+                                                    value={field?.state?.value || []}
+                                                    onValueChange={(value) => {
+                                                        field.handleChange(value)
+                                                    }}
+                                                    multiple
+                                                    required
+                                                >
                                                     <ComboboxChips>
                                                         <ComboboxValue>
                                                             {(value: { value: string; label: string }[]) => (
@@ -277,13 +286,7 @@ export function CreateBookForm() {
                                                         <ComboboxEmpty>No categories found.</ComboboxEmpty>
                                                         <ComboboxList>
                                                             {(item: { label: string; value: string }) => (
-                                                                <ComboboxItem
-                                                                    key={item.value}
-                                                                    value={item}
-                                                                    // onSelect={(value) =>
-                                                                    //     field.handleChange(value || "")
-                                                                    // }
-                                                                >
+                                                                <ComboboxItem key={item.value} value={item}>
                                                                     {item.label}
                                                                 </ComboboxItem>
                                                             )}
@@ -302,7 +305,12 @@ export function CreateBookForm() {
                                             <Field data-invalid={isInvalid}>
                                                 <FieldLabel htmlFor={field.name}>Description</FieldLabel>
                                                 <Textarea
-                                                    id="description"
+                                                    id={field.name}
+                                                    name={field.name}
+                                                    value={field.state.value}
+                                                    onBlur={field.handleBlur}
+                                                    onChange={(e) => field.handleChange(e.target.value)}
+                                                    aria-invalid={isInvalid}
                                                     autoComplete="off"
                                                     placeholder="Write a detailed description of your ebook..."
                                                     className="min-h-32"
@@ -319,7 +327,12 @@ export function CreateBookForm() {
                                             <Field data-invalid={isInvalid}>
                                                 <FieldLabel htmlFor={field.name}>Short Summery</FieldLabel>
                                                 <Textarea
-                                                    id="summery"
+                                                    id={field.name}
+                                                    name={field.name}
+                                                    value={field.state.value}
+                                                    onBlur={field.handleBlur}
+                                                    onChange={(e) => field.handleChange(e.target.value)}
+                                                    aria-invalid={isInvalid}
                                                     autoComplete="off"
                                                     placeholder="A brief summary for search results..."
                                                 />
