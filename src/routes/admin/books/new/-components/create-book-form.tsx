@@ -1,0 +1,368 @@
+import {
+    Stepper,
+    StepperContent,
+    StepperIndicator,
+    StepperItem,
+    StepperNav,
+    StepperPanel,
+    StepperSeparator,
+    StepperTrigger,
+} from "@/components/reui/stepper"
+import {
+    Field,
+    FieldDescription,
+    FieldError,
+    FieldGroup,
+    FieldLabel,
+    FieldLegend,
+    FieldSet,
+} from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Button } from "@/components/ui/button"
+import {
+    Combobox,
+    ComboboxChip,
+    ComboboxChips,
+    ComboboxChipsInput,
+    ComboboxEmpty,
+    ComboboxItem,
+    ComboboxList,
+    ComboboxPopup,
+    ComboboxValue,
+} from "@/components/ui/combobox"
+import { Select, SelectItem, SelectPopup, SelectTrigger, SelectValue } from "@/components/ui/select"
+import z from "zod"
+import { useForm } from "@tanstack/react-form"
+import { useState } from "react"
+
+const formSchema = z.object({
+    bookTitle: z.string().min(3),
+    subTitle: z.string().optional(),
+    slug: z.string().min(3),
+    author: z.string().min(3),
+    language: z.string().min(3),
+    categories: z.array(z.string()).min(1, "categories are required"),
+    description: z.string().min(3),
+    summery: z.string().min(3),
+})
+const languages = [
+    // coss.com
+    { label: "English", value: "en" },
+    { label: "Hindi", value: "hi" },
+    { label: "Spanish", value: "es" },
+    { label: "French", value: "fr" },
+    { label: "German", value: "de" },
+]
+const categories = [
+    // coss.com
+    { label: "Fiction", value: "fiction" },
+    { label: "Non-Fiction", value: "non-fiction" },
+    { label: "Biography", value: "biography" },
+    { label: "Children's Books", value: "childrens-books" },
+    { label: "Romance", value: "romance" },
+    { label: "Mystery", value: "mystery" },
+    { label: "Thriller", value: "thriller" },
+    { label: "Science Fiction", value: "science-fiction" },
+    { label: "Fantasy", value: "fantasy" },
+    { label: "Horror", value: "horror" },
+    { label: "Self-Help", value: "self-help" },
+]
+
+export function CreateBookForm() {
+    const [currentStep, setCurrentStep] = useState(0)
+
+    const form = useForm({
+        defaultValues: {
+            // step 1
+            bookTitle: "",
+            subTitle: "",
+            slug: "",
+            author: "",
+            language: "hi",
+            categories: "",
+            description: "",
+            summery: "",
+        },
+        // validators: {
+        //     onSubmit: formSchema,
+        // },
+        onSubmit: async ({ value }) => {
+            console.log(value)
+            alert("Form submitted successfully")
+        },
+    })
+    return (
+        <FieldSet>
+            <FieldSet>
+                <FieldLegend>Book Information</FieldLegend>
+                <FieldDescription>Enter the details of the book</FieldDescription>
+            </FieldSet>
+            <FieldSet>
+                <Stepper
+                    defaultValue={1}
+                    value={currentStep}
+                    onValueChange={(value) => {
+                        setCurrentStep(value)
+                    }}
+                >
+                    <StepperNav>
+                        <StepperItem step={1}>
+                            <StepperTrigger>
+                                <StepperIndicator>1</StepperIndicator>
+                            </StepperTrigger>
+                            <StepperSeparator />
+                        </StepperItem>
+                        <StepperItem step={2}>
+                            <StepperTrigger>
+                                <StepperIndicator>2</StepperIndicator>
+                            </StepperTrigger>
+                        </StepperItem>
+                    </StepperNav>
+                    <StepperPanel className="mt-8">
+                        <StepperContent value={1}>
+                            <FieldGroup>
+                                <form.Field
+                                    name="bookTitle"
+                                    children={(field) => {
+                                        const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+                                        return (
+                                            <Field data-invalid={isInvalid}>
+                                                <FieldLabel htmlFor={field.name}>Book Title</FieldLabel>
+                                                <Input
+                                                    id={field.name}
+                                                    name={field.name}
+                                                    value={field.state.value}
+                                                    onBlur={field.handleBlur}
+                                                    onChange={(e) => field.handleChange(e.target.value)}
+                                                    aria-invalid={isInvalid}
+                                                    autoComplete="off"
+                                                    placeholder="e.g. The Art of Design"
+                                                />
+                                            </Field>
+                                        )
+                                    }}
+                                />
+
+                                <form.Field
+                                    name="subTitle"
+                                    children={(field) => {
+                                        const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+                                        return (
+                                            <Field data-invalid={isInvalid}>
+                                                <FieldLabel htmlFor={field.name}>
+                                                    SubTitle{" "}
+                                                    <span className="text-xs text-muted-foreground font-normal">
+                                                        (optional)
+                                                    </span>
+                                                </FieldLabel>
+                                                <Input
+                                                    id={field.name}
+                                                    name={field.name}
+                                                    value={field.state.value}
+                                                    onBlur={field.handleBlur}
+                                                    onChange={(e) => field.handleChange(e.target.value)}
+                                                    aria-invalid={isInvalid}
+                                                    autoComplete="off"
+                                                    placeholder="A comprehensive guide..."
+                                                />
+                                            </Field>
+                                        )
+                                    }}
+                                />
+                                <form.Field
+                                    name="slug"
+                                    children={(field) => {
+                                        const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+                                        return (
+                                            <Field data-invalid={isInvalid}>
+                                                <FieldLabel htmlFor={field.name}>Slug</FieldLabel>
+                                                <Input
+                                                    id={field.name}
+                                                    name={field.name}
+                                                    value={field.state.value}
+                                                    onBlur={field.handleBlur}
+                                                    onChange={(e) => field.handleChange(e.target.value)}
+                                                    aria-invalid={isInvalid}
+                                                    autoComplete="off"
+                                                    placeholder="The-Art-of-Design"
+                                                />
+                                            </Field>
+                                        )
+                                    }}
+                                />
+                                <form.Field
+                                    name="author"
+                                    children={(field) => {
+                                        const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+                                        return (
+                                            <Field data-invalid={isInvalid}>
+                                                <FieldLabel htmlFor={field.name}>Author(s)</FieldLabel>
+                                                <Input
+                                                    id={field.name}
+                                                    name={field.name}
+                                                    value={field.state.value}
+                                                    onBlur={field.handleBlur}
+                                                    onChange={(e) => field.handleChange(e.target.value)}
+                                                    aria-invalid={isInvalid}
+                                                    autoComplete="off"
+                                                    placeholder="e.g. John Doe, Smith"
+                                                />
+                                            </Field>
+                                        )
+                                    }}
+                                />
+                                <form.Field
+                                    name="language"
+                                    children={(field) => {
+                                        const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+                                        return (
+                                            <Field data-invalid={isInvalid}>
+                                                <FieldLabel htmlFor={field.name}>Language</FieldLabel>
+                                                <Select
+                                                    items={languages}
+                                                    id={field.name}
+                                                    name={field.name}
+                                                    value={field.state.value}
+                                                    onValueChange={(value) => field.handleChange(value || "hi")}
+                                                    aria-invalid={isInvalid}
+                                                >
+                                                    <SelectTrigger>
+                                                        <SelectValue />
+                                                    </SelectTrigger>
+                                                    <SelectPopup>
+                                                        {languages.map((item) => (
+                                                            <SelectItem key={item.value} value={item}>
+                                                                {item.label}
+                                                            </SelectItem>
+                                                        ))}
+                                                    </SelectPopup>
+                                                </Select>
+                                            </Field>
+                                        )
+                                    }}
+                                />
+                                <form.Field
+                                    name="categories"
+                                    children={(field) => {
+                                        const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+                                        return (
+                                            <Field data-invalid={isInvalid}>
+                                                <FieldLabel htmlFor={field.name}>Categories</FieldLabel>
+                                                <Combobox items={categories} multiple required>
+                                                    <ComboboxChips>
+                                                        <ComboboxValue>
+                                                            {(value: { value: string; label: string }[]) => (
+                                                                <>
+                                                                    {value?.map((item) => (
+                                                                        <ComboboxChip
+                                                                            aria-label={item.label}
+                                                                            key={item.value}
+                                                                        >
+                                                                            {item.label}
+                                                                        </ComboboxChip>
+                                                                    ))}
+                                                                    <ComboboxChipsInput
+                                                                        placeholder={
+                                                                            value.length > 0
+                                                                                ? undefined
+                                                                                : "Add a category..."
+                                                                        }
+                                                                    />
+                                                                </>
+                                                            )}
+                                                        </ComboboxValue>
+                                                    </ComboboxChips>
+                                                    <ComboboxPopup>
+                                                        <ComboboxEmpty>No categories found.</ComboboxEmpty>
+                                                        <ComboboxList>
+                                                            {(item: { label: string; value: string }) => (
+                                                                <ComboboxItem
+                                                                    key={item.value}
+                                                                    value={item}
+                                                                    // onSelect={(value) =>
+                                                                    //     field.handleChange(value || "")
+                                                                    // }
+                                                                >
+                                                                    {item.label}
+                                                                </ComboboxItem>
+                                                            )}
+                                                        </ComboboxList>
+                                                    </ComboboxPopup>
+                                                </Combobox>
+                                            </Field>
+                                        )
+                                    }}
+                                />
+                                <form.Field
+                                    name="description"
+                                    children={(field) => {
+                                        const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+                                        return (
+                                            <Field data-invalid={isInvalid}>
+                                                <FieldLabel htmlFor={field.name}>Description</FieldLabel>
+                                                <Textarea
+                                                    id="description"
+                                                    autoComplete="off"
+                                                    placeholder="Write a detailed description of your ebook..."
+                                                    className="min-h-32"
+                                                />
+                                            </Field>
+                                        )
+                                    }}
+                                />
+                                <form.Field
+                                    name="summery"
+                                    children={(field) => {
+                                        const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+                                        return (
+                                            <Field data-invalid={isInvalid}>
+                                                <FieldLabel htmlFor={field.name}>Short Summery</FieldLabel>
+                                                <Textarea
+                                                    id="summery"
+                                                    autoComplete="off"
+                                                    placeholder="A brief summary for search results..."
+                                                />
+                                            </Field>
+                                        )
+                                    }}
+                                />
+
+                                <Field orientation="horizontal">
+                                    <Button
+                                        size={"lg"}
+                                        type="button"
+                                        variant={"outline"}
+                                        className="ml-auto flex-1 w-full py-6"
+                                    >
+                                        Cancel
+                                    </Button>
+                                    <Button size={"lg"} type="button" className="ml-auto flex-1 w-full py-6">
+                                        Continue
+                                    </Button>
+                                </Field>
+                            </FieldGroup>
+                        </StepperContent>
+                        <StepperContent value={2}>
+                            {/**/}
+                            <form.Subscribe
+                                selector={(state) => [state.canSubmit, state.isSubmitting]}
+                                children={([canSubmit, isSubmitting]) => (
+                                    <Field orientation="horizontal">
+                                        {/*<Button size={"lg"} variant="outline" type="button">
+                                            Previous
+                                        </Button>*/}
+                                        <Button type="submit" disabled={!canSubmit}>
+                                            {isSubmitting ? "Submitting..." : "Submit"}
+                                        </Button>
+                                    </Field>
+                                )}
+                            />
+                            {/**/}
+                        </StepperContent>
+                    </StepperPanel>
+                </Stepper>
+            </FieldSet>
+        </FieldSet>
+    )
+}
