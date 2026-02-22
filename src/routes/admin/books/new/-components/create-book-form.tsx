@@ -42,7 +42,14 @@ const formSchema = z.object({
     slug: z.string().min(3, "slug is required"),
     author: z.string().min(3, "author is required"),
     languages: z.any(),
-    categories: z.array(z.any()).min(1, "categories are required"),
+    categories: z
+        .array(
+            z.object({
+                label: z.string(),
+                value: z.string(),
+            }),
+        )
+        .min(1, "categories are required"),
     description: z.string().min(3, "description is required"),
     summery: z.string().min(3, "summery is required"),
 })
@@ -85,7 +92,6 @@ export function CreateBookForm() {
             summery: "",
         },
         validators: {
-            onBlur: formSchema,
             onChange: formSchema,
             onSubmit: formSchema,
         },
@@ -252,7 +258,7 @@ export function CreateBookForm() {
                                                 <FieldLabel htmlFor={field.name}>Categories</FieldLabel>
                                                 <Combobox
                                                     items={categories}
-                                                    value={field?.state?.value || []}
+                                                    value={field?.state?.value}
                                                     onValueChange={(value) => {
                                                         field.handleChange(value)
                                                     }}
