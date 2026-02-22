@@ -24,6 +24,7 @@ import {
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import z from "zod"
 import { useForm } from "@tanstack/react-form"
+import { useNavigate } from "@tanstack/react-router"
 
 const languages = [
     // coss.com
@@ -59,6 +60,7 @@ const formSchema = z.object({
 })
 
 export function CreateBookForm() {
+    const navigate = useNavigate()
     const form = useForm({
         defaultValues: {
             // step 1
@@ -77,7 +79,13 @@ export function CreateBookForm() {
         },
         onSubmit: async ({ value }) => {
             console.log(value)
-            alert("Form submitted successfully")
+            navigate({
+                from: "/admin/books/new/",
+                to: "/admin/books/$book_id/edit",
+                params: {
+                    book_id: "new-ebook",
+                },
+            })
         },
     })
     return (
