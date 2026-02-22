@@ -1,3 +1,12 @@
+import {
+    Sidebar,
+    SidebarContent,
+    SidebarFooter,
+    SidebarGroup,
+    SidebarHeader,
+    SidebarProvider,
+    SidebarTrigger,
+} from "@/components/ui/sidebar"
 import { createFileRoute, Outlet } from "@tanstack/react-router"
 
 export const Route = createFileRoute("/admin")({
@@ -6,9 +15,21 @@ export const Route = createFileRoute("/admin")({
 
 function RouteComponent() {
     return (
-        <div className="flex flex-col pl-0 lg:pl-64">
-            {/*<div className="absolute left-0 top-0 bottom-0 w-64 bg-sidebar p-2">sidebar</div>*/}
-            <Outlet />
-        </div>
+        <SidebarProvider>
+            <Sidebar>
+                <SidebarHeader />
+                <SidebarContent>
+                    <SidebarGroup />
+                    <SidebarGroup />
+                </SidebarContent>
+                <SidebarFooter />
+            </Sidebar>
+            <main className="flex-1">
+                <div className="sticky top-0">
+                    <SidebarTrigger />
+                </div>
+                <Outlet />
+            </main>
+        </SidebarProvider>
     )
 }
