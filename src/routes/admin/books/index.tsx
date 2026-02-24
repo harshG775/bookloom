@@ -36,7 +36,7 @@ function RouteComponent() {
                 {books.map((book) => (
                     <Link
                         key={book.id}
-                        to="/books/$book_id"
+                        to="/admin/books/$book_id"
                         params={{ book_id: String(book.id) }}
                         className="group space-y-2"
                     >

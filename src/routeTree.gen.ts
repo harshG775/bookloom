@@ -16,6 +16,7 @@ import { Route as BooksIndexRouteImport } from './routes/books/index'
 import { Route as BooksBook_idRouteImport } from './routes/books/$book_id'
 import { Route as AdminBooksIndexRouteImport } from './routes/admin/books/index'
 import { Route as AdminBooksNewIndexRouteImport } from './routes/admin/books/new/index'
+import { Route as AdminBooksBook_idIndexRouteImport } from './routes/admin/books/$book_id/index'
 import { Route as AuthedDashboardLibraryIndexRouteImport } from './routes/_authed/dashboard/library/index'
 import { Route as AuthedDashboardLibraryEbookRouteImport } from './routes/_authed/dashboard/library/$ebook'
 import { Route as AdminBooksBook_idEditIndexRouteImport } from './routes/admin/books/$book_id/edit/index'
@@ -54,6 +55,11 @@ const AdminBooksNewIndexRoute = AdminBooksNewIndexRouteImport.update({
   path: '/books/new/',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminBooksBook_idIndexRoute = AdminBooksBook_idIndexRouteImport.update({
+  id: '/books/$book_id/',
+  path: '/books/$book_id/',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AuthedDashboardLibraryIndexRoute =
   AuthedDashboardLibraryIndexRouteImport.update({
     id: '/dashboard/library/',
@@ -81,6 +87,7 @@ export interface FileRoutesByFullPath {
   '/admin/books/': typeof AdminBooksIndexRoute
   '/dashboard/library/$ebook': typeof AuthedDashboardLibraryEbookRoute
   '/dashboard/library/': typeof AuthedDashboardLibraryIndexRoute
+  '/admin/books/$book_id/': typeof AdminBooksBook_idIndexRoute
   '/admin/books/new/': typeof AdminBooksNewIndexRoute
   '/admin/books/$book_id/edit/': typeof AdminBooksBook_idEditIndexRoute
 }
@@ -92,6 +99,7 @@ export interface FileRoutesByTo {
   '/admin/books': typeof AdminBooksIndexRoute
   '/dashboard/library/$ebook': typeof AuthedDashboardLibraryEbookRoute
   '/dashboard/library': typeof AuthedDashboardLibraryIndexRoute
+  '/admin/books/$book_id': typeof AdminBooksBook_idIndexRoute
   '/admin/books/new': typeof AdminBooksNewIndexRoute
   '/admin/books/$book_id/edit': typeof AdminBooksBook_idEditIndexRoute
 }
@@ -105,6 +113,7 @@ export interface FileRoutesById {
   '/admin/books/': typeof AdminBooksIndexRoute
   '/_authed/dashboard/library/$ebook': typeof AuthedDashboardLibraryEbookRoute
   '/_authed/dashboard/library/': typeof AuthedDashboardLibraryIndexRoute
+  '/admin/books/$book_id/': typeof AdminBooksBook_idIndexRoute
   '/admin/books/new/': typeof AdminBooksNewIndexRoute
   '/admin/books/$book_id/edit/': typeof AdminBooksBook_idEditIndexRoute
 }
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
     | '/admin/books/'
     | '/dashboard/library/$ebook'
     | '/dashboard/library/'
+    | '/admin/books/$book_id/'
     | '/admin/books/new/'
     | '/admin/books/$book_id/edit/'
   fileRoutesByTo: FileRoutesByTo
@@ -129,6 +139,7 @@ export interface FileRouteTypes {
     | '/admin/books'
     | '/dashboard/library/$ebook'
     | '/dashboard/library'
+    | '/admin/books/$book_id'
     | '/admin/books/new'
     | '/admin/books/$book_id/edit'
   id:
@@ -141,6 +152,7 @@ export interface FileRouteTypes {
     | '/admin/books/'
     | '/_authed/dashboard/library/$ebook'
     | '/_authed/dashboard/library/'
+    | '/admin/books/$book_id/'
     | '/admin/books/new/'
     | '/admin/books/$book_id/edit/'
   fileRoutesById: FileRoutesById
@@ -204,6 +216,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminBooksNewIndexRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/books/$book_id/': {
+      id: '/admin/books/$book_id/'
+      path: '/books/$book_id'
+      fullPath: '/admin/books/$book_id/'
+      preLoaderRoute: typeof AdminBooksBook_idIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/_authed/dashboard/library/': {
       id: '/_authed/dashboard/library/'
       path: '/dashboard/library'
@@ -243,12 +262,14 @@ const AuthedRouteWithChildren =
 
 interface AdminRouteChildren {
   AdminBooksIndexRoute: typeof AdminBooksIndexRoute
+  AdminBooksBook_idIndexRoute: typeof AdminBooksBook_idIndexRoute
   AdminBooksNewIndexRoute: typeof AdminBooksNewIndexRoute
   AdminBooksBook_idEditIndexRoute: typeof AdminBooksBook_idEditIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminBooksIndexRoute: AdminBooksIndexRoute,
+  AdminBooksBook_idIndexRoute: AdminBooksBook_idIndexRoute,
   AdminBooksNewIndexRoute: AdminBooksNewIndexRoute,
   AdminBooksBook_idEditIndexRoute: AdminBooksBook_idEditIndexRoute,
 }

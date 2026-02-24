@@ -15,7 +15,7 @@ const config = defineConfig({
         },
     },
     plugins: [
-        devtools(),
+        devtools({}),
         nitro(),
         // this is the plugin that enables path aliases
         viteTsConfigPaths({
@@ -25,6 +25,9 @@ const config = defineConfig({
         tanstackStart(),
         viteReact(),
     ],
+    server: {
+        port: 5000,
+    },
 })
 
 export default config
