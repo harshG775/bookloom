@@ -80,8 +80,8 @@ export function CreateBookForm() {
         onSubmit: async ({ value }) => {
             console.log(value)
             navigate({
-                from: "/admin/books/new/",
-                to: "/admin/books/$book_id/edit",
+                from: "/admin/dashboard/books/new/",
+                to: "/admin/dashboard/books/$book_id/edit",
                 params: {
                     book_id: "new-ebook",
                 },

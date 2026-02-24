@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils"
 import { getBooksServerFn } from "@/server-functions/book.serverFn"
 import { createFileRoute, Link } from "@tanstack/react-router"
 
-export const Route = createFileRoute("/admin/books/")({
+export const Route = createFileRoute("/admin/dashboard/books/")({
     loader: async () => {
         const books = await getBooksServerFn({ page: 1, perPage: 10 })
         return { books }
@@ -22,7 +22,7 @@ function RouteComponent() {
                     <h1 className="text-2xl font-bold tracking-tight">Books</h1>
                 </div>
                 <Link
-                    to="/admin/books/new"
+                    to="/admin/dashboard/books/new"
                     className={cn(
                         buttonVariants({
                             variant: "default",
@@ -36,7 +36,7 @@ function RouteComponent() {
                 {books.map((book) => (
                     <Link
                         key={book.id}
-                        to="/admin/books/$book_id"
+                        to="/admin/dashboard/books/$book_id"
                         params={{ book_id: String(book.id) }}
                         className="group space-y-2"
                     >

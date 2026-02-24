@@ -24,12 +24,7 @@ function RouteComponent() {
                 </SidebarContent>
                 <SidebarFooter />
             </Sidebar>
-            <main className="flex-1">
-                <div className="sticky top-0">
-                    <SidebarTrigger />
-                </div>
-                <Outlet />
-            </main>
+            <Outlet />
         </SidebarProvider>
     )
 }

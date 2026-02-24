@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { ArrowLeft, Save } from "lucide-react"
 
-export const Route = createFileRoute("/admin/books/$book_id/edit/")({
+export const Route = createFileRoute("/admin/dashboard/books/$book_id/edit/")({
     component: RouteComponent,
 })
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
@@ -53,7 +53,7 @@ function RouteComponent() {
                 <div className="flex items-center gap-3">
                     <Button asChild variant="ghost" size="icon">
                         <Link
-                            to="/admin/books/$book_id"
+                            to="/admin/dashboard/books/$book_id"
                             params={{
                                 book_id: book.id,
                             }}
