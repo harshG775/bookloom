@@ -9,7 +9,6 @@ import TanStackQueryDevtools from "@/integrations/tanstack-query/devtools"
 import { DefaultCatchBoundary } from "@/components/DefaultCatchBoundary"
 import { NotFound } from "@/components/NotFound"
 import { getUserFn } from "@/server-functions/auth.serverFn"
-import { Header } from "./-components/sections/header"
 import { TooltipProvider } from "@/components/ui/tooltip"
 
 interface MyRouterContext {
@@ -67,7 +66,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
                 <HeadContent />
             </head>
             <body className="flex flex-col">
-                {/*<Header />*/}
                 <TooltipProvider>{children}</TooltipProvider>
                 <TanStackDevtools
                     config={{
