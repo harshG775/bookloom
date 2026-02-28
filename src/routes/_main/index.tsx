@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router"
 import Header from "./-components/header"
 import Hero from "./-components/sections/hero"
+import { Feature } from "./-components/sections/feature"
 
 export const Route = createFileRoute("/_main/")({
     component: RouteComponent,
@@ -13,9 +14,7 @@ function RouteComponent() {
 
             <main>
                 <Hero />
-                <section id="features" className="min-h-dvh">
-                    Features / Value Proposition Section
-                </section>
+                <Feature />
                 <section id="about-author" className="min-h-dvh">
                     Author Introduction Section
                 </section>

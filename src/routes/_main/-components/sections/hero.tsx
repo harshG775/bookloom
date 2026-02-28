@@ -3,7 +3,7 @@ import { MoveRight } from "lucide-react"
 
 export default function Hero() {
     return (
-        <section className="relative overflow-hidden bg-background flex flex-col items-center min-h-dvh mt-14">
+        <section className="relative overflow-hidden bg-background flex flex-col justify-center min-h-dvh">
             <div className="max-w-(--breakpoint-2xl) mx-auto w-full px-6 lg:px-12 grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
                 <div className="flex flex-col items-start">
                     <div className="mb-6 flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-4 py-1.5">
