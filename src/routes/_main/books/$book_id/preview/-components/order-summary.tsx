@@ -1,42 +1,25 @@
-// /routes/_main/-components/order-summary.tsx
-import { BookOpen, Download, Mail } from "lucide-react"
+import { cn } from "@/lib/utils"
 
-export default function OrderSummary() {
-    // TODO: Replace with actual book data from route params/context
+export default function OrderSummary({ className }: { className?: string }) {
     const book = {
         title: "The Focus Blueprint",
-        subtitle: "A masterclass in deep work",
-        cover: "/books/focus-blueprint-cover.jpg",
+        subtitle:
+            "A comprehensive system to master your attention, eliminate distractions, and achieve peak cognitive performance in the digital age.",
+        cover: "https://lh3.googleusercontent.com/aida-public/AB6AXuArIZT4kbiiPn7scbABbfgx46nzy3R5_xGrdYfurhEHWaLDy7Pds21elAEm6vgmD4GKT_sN2EZFmX1InQCuYvq7F8C3p3huw2MTqg3vANM56mrs7Vih4L9lUvGpS8K8JwZFzTImBWSkLtv7PTPFbrPd4MsgxzREtwtVM_iSW2KNr7_7Ngzidp9g58Z7SA2gei__zAL_Xet_SBg9BK97mIuw-ZIs3z-eh36FE3Cm1WVIewmLuUl8PkAc_0cId7XlFrZ0sMxL6A8bvlB5",
         price: 29,
         currency: "$",
     }
 
     return (
-        <div className="bg-white rounded-2xl border border-[#E8E4D9] p-6 md:p-8">
+        <div className={cn("bg-white rounded-2xl border border-[#E8E4D9] p-6 md:p-8 flex flex-col", className)}>
+            <h3 className="text-lg font-bold text-[#1A1A1A] mb-4 border-b border-primaru pb-4">Order Summary</h3>
+
             {/* Book Info */}
-            <div className="flex gap-6 mb-8">
-                <div className="w-32 h-48 flex-shrink-0 bg-[#F5F3EF] rounded-lg overflow-hidden">
-                    <img src={book.cover} alt={book.title} className="w-full h-full object-cover" />
-                </div>
+            <div className="flex-1 flex flex-col gap-6 mb-8">
+                <img src={book.cover} alt={book.title} className="w-full h-full object-cover" />
                 <div className="flex-1">
                     <h2 className="text-xl font-bold text-[#1A1A1A] mb-1">{book.title}</h2>
-                    <p className="text-[#6B6B6B] mb-4">{book.subtitle}</p>
-
-                    {/* What You Get */}
-                    <div className="space-y-3">
-                        <div className="flex items-center gap-3 text-sm text-[#6B6B6B]">
-                            <BookOpen className="w-4 h-4 text-[#2D5D2C]" />
-                            <span>Full eBook Access (PDF, ePub, Mobi)</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-sm text-[#6B6B6B]">
-                            <Download className="w-4 h-4 text-[#2D5D2C]" />
-                            <span>Instant Download</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-sm text-[#6B6B6B]">
-                            <Mail className="w-4 h-4 text-[#2D5D2C]" />
-                            <span>Lifetime Updates</span>
-                        </div>
-                    </div>
+                    <p className="text-[#6B6B6B]">{book.subtitle}</p>
                 </div>
             </div>
 
@@ -68,22 +51,6 @@ export default function OrderSummary() {
                         {book.price.toFixed(2)}
                     </span>
                 </div>
-            </div>
-
-            {/* Email Input */}
-            <div className="mt-6">
-                <label htmlFor="email" className="block text-sm font-medium text-[#1A1A1A] mb-2">
-                    Email Address
-                </label>
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="your@email.com"
-                    className="w-full px-4 py-3 border border-[#E8E4D9] rounded-lg 
-                             focus:outline-none focus:ring-2 focus:ring-[#1A1A1A] 
-                             focus:border-transparent text-[#1A1A1A] bg-white"
-                />
-                <p className="text-xs text-[#6B6B6B] mt-2">Your book access link will be sent to this email</p>
             </div>
         </div>
     )
