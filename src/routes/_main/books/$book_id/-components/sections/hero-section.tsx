@@ -66,19 +66,12 @@ export default function HeroSection() {
                     <div className="absolute inset-0 bg-primary/5 rounded-full blur-3xl scale-75"></div>
                     <div className="relative group cursor-pointer">
                         <div
-                            className="w-[320px] md:w-[420px] aspect-[3/4] bg-primary rounded-r-xl book-shadow transform -rotate-3 transition-transform group-hover:rotate-0 duration-700 overflow-hidden flex flex-col items-center justify-center text-white p-12 text-center"
+                            className="w-[320px] md:w-[420px] aspect-[3/4] bg-center bg-primary rounded-r-xl book-shadow transform -rotate-3 transition-transform group-hover:rotate-0 duration-700 overflow-hidden flex flex-col items-center justify-center text-white p-12 text-center"
                             data-alt="Professional 3D book cover for The Focus Blueprint showing a minimalist mountain peak"
                             style={{
                                 backgroundImage: `url("https://lh3.googleusercontent.com/aida-public/AB6AXuBwnBdvGh_S5gslSTUEGHq1uTNBYbJmZafK9bqZVaD3eEa4IGPYVf4uh4b3J6nL5GBxDh__0EFD3QgG8eZix3wOS_gLRxytaxlnPgo53WihKA8IMDsVUdlrtRmycnHN_IeSER6OGTS_chV5uhhsTPVq4RQZwm4e3h97MxUvv7IC1GjbkooDxgmTh8inl-M6OPImiTy1ufTPK9f8CP_kApzU7TsUAEOy62K67PxFz35po90QLtGTZf2it0evLJ_2nJtNO-Skaiknlp5c")`,
                             }}
                         >
-                            <div className="border-4 border-white/20 p-8 flex flex-col items-center gap-6">
-                                <span className="material-symbols-outlined text-6xl opacity-50">adjust</span>
-                                <h3 className="font-serif text-3xl font-bold">The Focus Blueprint</h3>
-                                <p className="text-sm tracking-widest uppercase opacity-70">
-                                    A Masterclass in Deep Work
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
