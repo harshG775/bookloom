@@ -14,6 +14,7 @@ import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as MainIndexRouteImport } from './routes/_main/index'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as AdminDashboardIndexRouteImport } from './routes/admin/dashboard/index'
+import { Route as MainBooksIndexRouteImport } from './routes/_main/books/index'
 import { Route as AdminDashboardBooksIndexRouteImport } from './routes/admin/dashboard/books/index'
 import { Route as AdminDashboardBooksNewIndexRouteImport } from './routes/admin/dashboard/books/new/index'
 import { Route as AdminDashboardBooksBook_idIndexRouteImport } from './routes/admin/dashboard/books/$book_id/index'
@@ -42,6 +43,11 @@ const AdminDashboardIndexRoute = AdminDashboardIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AdminDashboardRoute,
+} as any)
+const MainBooksIndexRoute = MainBooksIndexRouteImport.update({
+  id: '/books/',
+  path: '/books/',
+  getParentRoute: () => MainRoute,
 } as any)
 const AdminDashboardBooksIndexRoute =
   AdminDashboardBooksIndexRouteImport.update({
@@ -72,6 +78,7 @@ export interface FileRoutesByFullPath {
   '/': typeof MainIndexRoute
   '/admin/dashboard': typeof AdminDashboardRouteWithChildren
   '/admin/': typeof AdminIndexRoute
+  '/books/': typeof MainBooksIndexRoute
   '/admin/dashboard/': typeof AdminDashboardIndexRoute
   '/admin/dashboard/books/': typeof AdminDashboardBooksIndexRoute
   '/admin/dashboard/books/$book_id/': typeof AdminDashboardBooksBook_idIndexRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof MainIndexRoute
   '/admin': typeof AdminIndexRoute
+  '/books': typeof MainBooksIndexRoute
   '/admin/dashboard': typeof AdminDashboardIndexRoute
   '/admin/dashboard/books': typeof AdminDashboardBooksIndexRoute
   '/admin/dashboard/books/$book_id': typeof AdminDashboardBooksBook_idIndexRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/admin/dashboard': typeof AdminDashboardRouteWithChildren
   '/_main/': typeof MainIndexRoute
   '/admin/': typeof AdminIndexRoute
+  '/_main/books/': typeof MainBooksIndexRoute
   '/admin/dashboard/': typeof AdminDashboardIndexRoute
   '/admin/dashboard/books/': typeof AdminDashboardBooksIndexRoute
   '/admin/dashboard/books/$book_id/': typeof AdminDashboardBooksBook_idIndexRoute
@@ -105,6 +114,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin/dashboard'
     | '/admin/'
+    | '/books/'
     | '/admin/dashboard/'
     | '/admin/dashboard/books/'
     | '/admin/dashboard/books/$book_id/'
@@ -114,6 +124,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/admin'
+    | '/books'
     | '/admin/dashboard'
     | '/admin/dashboard/books'
     | '/admin/dashboard/books/$book_id'
@@ -125,6 +136,7 @@ export interface FileRouteTypes {
     | '/admin/dashboard'
     | '/_main/'
     | '/admin/'
+    | '/_main/books/'
     | '/admin/dashboard/'
     | '/admin/dashboard/books/'
     | '/admin/dashboard/books/$book_id/'
@@ -175,6 +187,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDashboardIndexRouteImport
       parentRoute: typeof AdminDashboardRoute
     }
+    '/_main/books/': {
+      id: '/_main/books/'
+      path: '/books'
+      fullPath: '/books/'
+      preLoaderRoute: typeof MainBooksIndexRouteImport
+      parentRoute: typeof MainRoute
+    }
     '/admin/dashboard/books/': {
       id: '/admin/dashboard/books/'
       path: '/books'
@@ -208,10 +227,12 @@ declare module '@tanstack/react-router' {
 
 interface MainRouteChildren {
   MainIndexRoute: typeof MainIndexRoute
+  MainBooksIndexRoute: typeof MainBooksIndexRoute
 }
 
 const MainRouteChildren: MainRouteChildren = {
   MainIndexRoute: MainIndexRoute,
+  MainBooksIndexRoute: MainBooksIndexRoute,
 }
 
 const MainRouteWithChildren = MainRoute._addFileChildren(MainRouteChildren)
