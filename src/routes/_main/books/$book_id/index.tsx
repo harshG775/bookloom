@@ -12,11 +12,13 @@ export const Route = createFileRoute("/_main/books/$book_id/")({
 function RouteComponent() {
     return (
         <main className="flex-1 min-h-dvh pt-16">
-            <HeroSection />
-            <ChaptersSection />
-            <ReviewsSection />
-            <SpecsSection />
-            <CtaSection />
+            <HeroSection />             {/* Hook + Primary CTA */}
+            <ChaptersSection />         {/* What's Inside */}
+            <ReviewsSection />          {/* Social Proof */}
+            <SpecsSection />            {/* Product Details */}
+            {/* <FaqSection /> */}      {/* !TODO - Objection Handling */}
+            <CtaSection />              {/* Final Purchase Push */}
+            {/* <RelatedBooks /> */}    {/* !TODO - Cross-sell */}
         </main>
     )
 }
