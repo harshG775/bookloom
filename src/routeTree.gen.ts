@@ -14,6 +14,7 @@ import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as MainIndexRouteImport } from './routes/_main/index'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as AdminDashboardIndexRouteImport } from './routes/admin/dashboard/index'
+import { Route as MainLibraryIndexRouteImport } from './routes/_main/library/index'
 import { Route as MainCheckoutIndexRouteImport } from './routes/_main/checkout/index'
 import { Route as MainBooksIndexRouteImport } from './routes/_main/books/index'
 import { Route as AdminDashboardBooksIndexRouteImport } from './routes/admin/dashboard/books/index'
@@ -46,6 +47,11 @@ const AdminDashboardIndexRoute = AdminDashboardIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AdminDashboardRoute,
+} as any)
+const MainLibraryIndexRoute = MainLibraryIndexRouteImport.update({
+  id: '/library/',
+  path: '/library/',
+  getParentRoute: () => MainRoute,
 } as any)
 const MainCheckoutIndexRoute = MainCheckoutIndexRouteImport.update({
   id: '/checkout/',
@@ -99,6 +105,7 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AdminIndexRoute
   '/books/': typeof MainBooksIndexRoute
   '/checkout/': typeof MainCheckoutIndexRoute
+  '/library/': typeof MainLibraryIndexRoute
   '/admin/dashboard/': typeof AdminDashboardIndexRoute
   '/books/$book_id/': typeof MainBooksBook_idIndexRoute
   '/admin/dashboard/books/': typeof AdminDashboardBooksIndexRoute
@@ -112,6 +119,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminIndexRoute
   '/books': typeof MainBooksIndexRoute
   '/checkout': typeof MainCheckoutIndexRoute
+  '/library': typeof MainLibraryIndexRoute
   '/admin/dashboard': typeof AdminDashboardIndexRoute
   '/books/$book_id': typeof MainBooksBook_idIndexRoute
   '/admin/dashboard/books': typeof AdminDashboardBooksIndexRoute
@@ -128,6 +136,7 @@ export interface FileRoutesById {
   '/admin/': typeof AdminIndexRoute
   '/_main/books/': typeof MainBooksIndexRoute
   '/_main/checkout/': typeof MainCheckoutIndexRoute
+  '/_main/library/': typeof MainLibraryIndexRoute
   '/admin/dashboard/': typeof AdminDashboardIndexRoute
   '/_main/books/$book_id/': typeof MainBooksBook_idIndexRoute
   '/admin/dashboard/books/': typeof AdminDashboardBooksIndexRoute
@@ -144,6 +153,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/books/'
     | '/checkout/'
+    | '/library/'
     | '/admin/dashboard/'
     | '/books/$book_id/'
     | '/admin/dashboard/books/'
@@ -157,6 +167,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/books'
     | '/checkout'
+    | '/library'
     | '/admin/dashboard'
     | '/books/$book_id'
     | '/admin/dashboard/books'
@@ -172,6 +183,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/_main/books/'
     | '/_main/checkout/'
+    | '/_main/library/'
     | '/admin/dashboard/'
     | '/_main/books/$book_id/'
     | '/admin/dashboard/books/'
@@ -223,6 +235,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin/dashboard/'
       preLoaderRoute: typeof AdminDashboardIndexRouteImport
       parentRoute: typeof AdminDashboardRoute
+    }
+    '/_main/library/': {
+      id: '/_main/library/'
+      path: '/library'
+      fullPath: '/library/'
+      preLoaderRoute: typeof MainLibraryIndexRouteImport
+      parentRoute: typeof MainRoute
     }
     '/_main/checkout/': {
       id: '/_main/checkout/'
@@ -287,6 +306,7 @@ interface MainRouteChildren {
   MainIndexRoute: typeof MainIndexRoute
   MainBooksIndexRoute: typeof MainBooksIndexRoute
   MainCheckoutIndexRoute: typeof MainCheckoutIndexRoute
+  MainLibraryIndexRoute: typeof MainLibraryIndexRoute
   MainBooksBook_idIndexRoute: typeof MainBooksBook_idIndexRoute
   MainBooksBook_idPreviewIndexRoute: typeof MainBooksBook_idPreviewIndexRoute
 }
@@ -295,6 +315,7 @@ const MainRouteChildren: MainRouteChildren = {
   MainIndexRoute: MainIndexRoute,
   MainBooksIndexRoute: MainBooksIndexRoute,
   MainCheckoutIndexRoute: MainCheckoutIndexRoute,
+  MainLibraryIndexRoute: MainLibraryIndexRoute,
   MainBooksBook_idIndexRoute: MainBooksBook_idIndexRoute,
   MainBooksBook_idPreviewIndexRoute: MainBooksBook_idPreviewIndexRoute,
 }
