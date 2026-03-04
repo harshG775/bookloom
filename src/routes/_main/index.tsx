@@ -13,12 +13,15 @@ export const Route = createFileRoute("/_main/")({
 function RouteComponent() {
     return (
         <main className="flex-1 min-h-dvh pt-16">
-            <Hero />
-            <Feature />
-            <AboutAuthor />
-            <EssentialReading />
-            <Testimonials />
-            <GetStartedCta />
+            <Hero />                            {/* ✅ 1. Hook & Primary CTA */}
+            {/* <SocialProofLogos/> !TODO*/}    {/* ✅ 2. Trust Validation */}
+            <Feature />                         {/* ✅ 3. Value Proposition */}
+            <AboutAuthor />                     {/* ✅ 4. Connection & Authority */}
+            <Testimonials />                    {/* ✅ 5. Social Proof */}
+            {/* <FAQ /> !TODO*/}                {/* ✅ 6. Objection Handling */}
+            <GetStartedCta />                   {/* ✅ 7. Final Purchase Push */}
+            <EssentialReading />                {/* ✅ 8. Cross-sell Catalog */}
+            {/* <Newsletter/> !TODO*/}          {/* ✅ 9. Lead Capture */}
         </main>
     )
 }
