@@ -1,8 +1,10 @@
 import { BookCard } from "@/components/cards"
 import { ArrowRight } from "lucide-react"
 
+
 const books = [
     {
+        id: "1",
         title: "Focus Mastery",
         description: "Reclaim your attention span.",
         price: "$19.99",
@@ -11,6 +13,7 @@ const books = [
         alt: "Focus Mastery Book Cover",
     },
     {
+        id: "2",
         title: "Deep Work Habits",
         description: "Build a fortress of solitude.",
         price: "$24.99",
@@ -19,6 +22,7 @@ const books = [
         alt: "Deep Work Habits Book Cover",
     },
     {
+        id: "3",
         title: "The Mindful Leader",
         description: "Empathy in high-pressure.",
         price: "$29.99",
