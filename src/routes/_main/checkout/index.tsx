@@ -11,7 +11,7 @@ export const Route = createFileRoute("/_main/checkout/")({
 function RouteComponent() {
     return (
         <main className="flex-1 min-h-dvh pt-16">
-            <div className="max-w-(--breakpoint-lg) mx-auto px-4 py-12">
+            <div className="max-w-(--breakpoint-lg) mx-auto px-3 lg:px-6 py-12">
                 {/* Checkout Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-(--breakpoint-lg) mx-auto">
                     <OrderSummary className="order-2 lg:order-1 row-span-2" />
