@@ -250,11 +250,11 @@ const booksData = [
 type createBookPayload = {
     title: string
     slug: string
-    covers: {
+    covers: Array<{
         id: string
         url: string
         type: "front" | "thumbnail"
-    }[]
+    }>
     author: {
         id: string
         name: string
@@ -264,7 +264,7 @@ type createBookPayload = {
         totalPages: number
         language: string
         category: string
-        tags: string[]
+        tags: Array<string>
     }
     pricing: {
         price: number
