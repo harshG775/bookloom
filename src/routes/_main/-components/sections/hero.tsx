@@ -1,6 +1,7 @@
 import { MoveRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { Link } from "@tanstack/react-router"
 
 export default function Hero({ className }: { className?: string }) {
     return (
@@ -30,13 +31,20 @@ export default function Hero({ className }: { className?: string }) {
                     </p>
 
                     <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 w-full max-w-lg gap-4">
-                        <Button className="w-full px-8! h-14 font-bold uppercase">Start Reading Now</Button>
-                        <Button className="w-full px-8! h-14 font-bold uppercase group" variant={"secondary"}>
-                            Read Sample Chapter
-                            <MoveRight className="transition-transform group-hover:translate-x-1" />
+                        <Button asChild className="w-full px-8! h-14 font-bold uppercase">
+                            <Link to="/books/$book_id" params={{ book_id: "123" }}>
+                                Get the Book
+                            </Link>
+                        </Button>
+
+                        <Button asChild className="w-full px-8! h-14 font-bold uppercase group" variant={"secondary"}>
+                            {/* <Link to="/books/$book_id/preview" params={{ book_id: "123" }}> */}
+                            <Link to="/books/$book_id" params={{ book_id: "123" }}>
+                                Read Sample Chapter
+                                <MoveRight className="transition-transform group-hover:translate-x-1" />
+                            </Link>
                         </Button>
                     </div>
-
                     {/* Social Proof / Logos */}
                     <div className="mt-16">
                         <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/60">
