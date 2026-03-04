@@ -1,6 +1,6 @@
+import { MoveRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { MoveRight } from "lucide-react"
 
 export default function Hero({ className }: { className?: string }) {
     return (
@@ -10,7 +10,7 @@ export default function Hero({ className }: { className?: string }) {
                 className,
             )}
         >
-            <div className="max-w-(--breakpoint-2xl) mx-auto w-full px-6 lg:px-12 grid items-center lg:grid-cols-2 gap-8 lg:gap-20">
+            <div className="max-w-(--breakpoint-xl) mx-auto w-full px-6 lg:px-12 grid items-center lg:grid-cols-2 gap-8 lg:gap-20">
                 <div className="order-2 lg:order-1 flex flex-col items-start">
                     <div className="mb-6 flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-4 py-1.5">
                         <span className="h-1.5 w-1.5 rounded-full bg-accent" />

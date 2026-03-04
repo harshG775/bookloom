@@ -1,4 +1,4 @@
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { Outlet, createFileRoute } from "@tanstack/react-router"
 import {
     Sidebar,
     SidebarContent,
@@ -9,12 +9,9 @@ import {
     SidebarTrigger,
 } from "@/components/ui/sidebar"
 
-export const Route = createFileRoute('/admin/dashboard')({
-  component: RouteComponent,
+export const Route = createFileRoute("/admin/dashboard")({
+    component: RouteComponent,
 })
-
-
-
 
 function RouteComponent() {
     return (

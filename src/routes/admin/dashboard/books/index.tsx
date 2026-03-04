@@ -1,7 +1,7 @@
+import { Link, createFileRoute } from "@tanstack/react-router"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { getBooksServerFn } from "@/server-functions/book.serverFn"
-import { createFileRoute, Link } from "@tanstack/react-router"
 
 export const Route = createFileRoute("/admin/dashboard/books/")({
     loader: async () => {

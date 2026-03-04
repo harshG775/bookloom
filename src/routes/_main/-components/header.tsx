@@ -16,7 +16,7 @@ export default function Header() {
         <>
             <header className="fixed top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md">
                 <nav>
-                    <div className="mx-auto flex max-w-(--breakpoint-2xl) items-center justify-between h-16 px-3 sm:px-6 lg:px-10">
+                    <div className="mx-auto flex max-w-(--breakpoint-xl) items-center justify-between h-16 px-3 sm:px-6 lg:px-10">
                         <Link to="/" className="text-2xl font-serif font-bold tracking-tight text-foreground">
                             Bookloom<span className="text-accent">.</span>
                         </Link>

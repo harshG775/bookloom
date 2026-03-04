@@ -1,3 +1,6 @@
+import z from "zod"
+import { useForm } from "@tanstack/react-form"
+import { useNavigate } from "@tanstack/react-router"
 import {
     Field,
     FieldDescription,
@@ -22,9 +25,6 @@ import {
     ComboboxValue,
 } from "@/components/ui/combobox"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import z from "zod"
-import { useForm } from "@tanstack/react-form"
-import { useNavigate } from "@tanstack/react-router"
 
 const languages = [
     // coss.com
@@ -69,7 +69,7 @@ export function CreateBookForm() {
             slug: "",
             author: "",
             language: "",
-            categories: [] as { label: string; value: string }[],
+            categories: [] as Array<{ label: string; value: string }>,
             description: "",
             summary: "",
         },
@@ -242,7 +242,7 @@ export function CreateBookForm() {
                                         >
                                             <ComboboxChips>
                                                 <ComboboxValue>
-                                                    {(value: { value: string; label: string }[]) => (
+                                                    {(value: Array<{ value: string; label: string }>) => (
                                                         <>
                                                             {value?.map((item) => (
                                                                 <ComboboxChip aria-label={item.label} key={item.value}>

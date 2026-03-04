@@ -32,8 +32,8 @@ export default function AboutAuthor() {
                                 className="h-16 w-auto text-primary"
                                 fill="none"
                                 stroke="currentColor"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                                 stroke-width="2"
                                 viewBox="0 0 200 60"
                             >
@@ -43,11 +43,11 @@ export default function AboutAuthor() {
                         </div>
                     </div>
                     <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-                        <div className="relative w-full max-w-[400px]">
+                        <div className="relative w-full max-w-100">
                             <div className="absolute inset-0 border border-stone-300 translate-x-4 translate-y-4"></div>
                             <img
                                 alt="Alex Rivers Portrait"
-                                className="relative w-full aspect-[4/5] object-cover grayscale contrast-125 brightness-110 shadow-xl"
+                                className="relative w-full aspect-4/5 object-cover grayscale contrast-125 brightness-110 shadow-xl"
                                 data-alt="Black and white candid portrait of Alex Rivers looking thoughtful"
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVDeW9ft31TZbnrW2vMuHb30Fwkrv052eWMZjaOH6ZXWw-yd3IIf7S6Yt6zGgo6iiDck4DdFIRoyJsMIrVvUOioPw3v3u8utUieMSR3Vz4sUGcrxjNNpe26TF20oxDr1nnr5T1awZU0-k42NZWEXAqSkE8XGEJEOgl26we7NH6KHZ42xeF5-9c9ZQMWAuzCF1WST8GFWxmjTE-WKbECqhJIutap3uspnoDNtwtXOGlJB-oIHf7K-kQ90YJGfFopSuuPMAz960xoD3L"
                             />

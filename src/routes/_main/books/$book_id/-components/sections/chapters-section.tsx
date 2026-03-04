@@ -1,4 +1,3 @@
-
 export default function ChaptersSection() {
     return (
         <section className="py-24 bg-background" id="chapters">

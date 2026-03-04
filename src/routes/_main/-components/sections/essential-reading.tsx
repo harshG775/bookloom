@@ -1,6 +1,5 @@
-import { BookCard } from "@/components/cards"
 import { ArrowRight } from "lucide-react"
-
+import { BookCard } from "@/components/cards"
 
 const books = [
     {

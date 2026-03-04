@@ -1,9 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router"
+import { Link, createFileRoute } from "@tanstack/react-router"
+import { ExternalLink, FileText, ImageIcon, Pencil } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
-import { FileText, ImageIcon, Pencil, ExternalLink } from "lucide-react"
 
 export const Route = createFileRoute("/admin/dashboard/books/$book_id/")({
     component: RouteComponent,

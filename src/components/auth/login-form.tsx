@@ -1,13 +1,13 @@
+import { useRouter } from "@tanstack/react-router"
+import { useForm } from "@tanstack/react-form"
+import z from "zod"
+import { Loader } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Field, FieldDescription, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { logInFn } from "@/server-functions/auth.serverFn"
-import { useRouter } from "@tanstack/react-router"
-import { useForm } from "@tanstack/react-form"
-import z from "zod"
-import { Loader } from "lucide-react"
 
 const formSchema = z.object({
     email: z.email("Invalid email address"),

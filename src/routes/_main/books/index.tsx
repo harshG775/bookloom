@@ -1,5 +1,5 @@
-import { BookCard } from "@/components/cards"
 import { createFileRoute } from "@tanstack/react-router"
+import { BookCard } from "@/components/cards"
 
 export const Route = createFileRoute("/_main/books/")({
     component: RouteComponent,
@@ -7,7 +7,7 @@ export const Route = createFileRoute("/_main/books/")({
 
 const books = [
     {
-        id:"1",
+        id: "1",
         title: "Focus Mastery",
         description: "Reclaim your attention span.",
         price: "$19.99",
@@ -16,7 +16,7 @@ const books = [
         alt: "Focus Mastery Book Cover",
     },
     {
-        id:"2",
+        id: "2",
         title: "Deep Work Habits",
         description: "Build a fortress of solitude.",
         price: "$24.99",
@@ -25,7 +25,7 @@ const books = [
         alt: "Deep Work Habits Book Cover",
     },
     {
-        id:"3",
+        id: "3",
         title: "The Mindful Leader",
         description: "Empathy in high-pressure.",
         price: "$29.99",
@@ -33,7 +33,6 @@ const books = [
 
         alt: "The Mindful Leader Book Cover",
     },
-
 ]
 function RouteComponent() {
     return (
@@ -45,8 +44,6 @@ function RouteComponent() {
                             <h2 className="text-3xl font-serif font-medium text-primary">Essential Reading</h2>
                             <p className="text-stone-500 mt-2">Complete your productivity library.</p>
                         </div>
-
-                        
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">

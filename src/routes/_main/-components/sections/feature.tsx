@@ -1,9 +1,9 @@
-import { Brain, LayoutGrid, FileText, Infinity } from "lucide-react"
+import { Brain, FileText, Infinity, LayoutGrid } from "lucide-react"
 
 export default function Feature() {
     return (
         <section className="bg-zinc-50 flex flex-col justify-center min-h-dvh">
-            <div className="max-w-(--breakpoint-2xl) mx-auto px-3 sm:px-6 lg:px-10">
+            <div className="max-w-(--breakpoint-xl) mx-auto px-3 sm:px-6 lg:px-10">
                 <div className="mb-16 text-center lg:mb-24">
                     <h2 className="font-serif text-3xl font-medium text-foreground md:text-5xl">
                         Engineering Your Attention
