@@ -14,11 +14,13 @@ import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as MainIndexRouteImport } from './routes/_main/index'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as AdminDashboardIndexRouteImport } from './routes/admin/dashboard/index'
+import { Route as MainCheckoutIndexRouteImport } from './routes/_main/checkout/index'
 import { Route as MainBooksIndexRouteImport } from './routes/_main/books/index'
 import { Route as AdminDashboardBooksIndexRouteImport } from './routes/admin/dashboard/books/index'
 import { Route as MainBooksBook_idIndexRouteImport } from './routes/_main/books/$book_id/index'
 import { Route as AdminDashboardBooksNewIndexRouteImport } from './routes/admin/dashboard/books/new/index'
 import { Route as AdminDashboardBooksBook_idIndexRouteImport } from './routes/admin/dashboard/books/$book_id/index'
+import { Route as MainBooksBook_idPreviewIndexRouteImport } from './routes/_main/books/$book_id/preview/index'
 import { Route as AdminDashboardBooksBook_idEditIndexRouteImport } from './routes/admin/dashboard/books/$book_id/edit/index'
 
 const MainRoute = MainRouteImport.update({
@@ -44,6 +46,11 @@ const AdminDashboardIndexRoute = AdminDashboardIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AdminDashboardRoute,
+} as any)
+const MainCheckoutIndexRoute = MainCheckoutIndexRouteImport.update({
+  id: '/checkout/',
+  path: '/checkout/',
+  getParentRoute: () => MainRoute,
 } as any)
 const MainBooksIndexRoute = MainBooksIndexRouteImport.update({
   id: '/books/',
@@ -73,6 +80,12 @@ const AdminDashboardBooksBook_idIndexRoute =
     path: '/books/$book_id/',
     getParentRoute: () => AdminDashboardRoute,
   } as any)
+const MainBooksBook_idPreviewIndexRoute =
+  MainBooksBook_idPreviewIndexRouteImport.update({
+    id: '/books/$book_id/preview/',
+    path: '/books/$book_id/preview/',
+    getParentRoute: () => MainRoute,
+  } as any)
 const AdminDashboardBooksBook_idEditIndexRoute =
   AdminDashboardBooksBook_idEditIndexRouteImport.update({
     id: '/books/$book_id/edit/',
@@ -85,9 +98,11 @@ export interface FileRoutesByFullPath {
   '/admin/dashboard': typeof AdminDashboardRouteWithChildren
   '/admin/': typeof AdminIndexRoute
   '/books/': typeof MainBooksIndexRoute
+  '/checkout/': typeof MainCheckoutIndexRoute
   '/admin/dashboard/': typeof AdminDashboardIndexRoute
   '/books/$book_id/': typeof MainBooksBook_idIndexRoute
   '/admin/dashboard/books/': typeof AdminDashboardBooksIndexRoute
+  '/books/$book_id/preview/': typeof MainBooksBook_idPreviewIndexRoute
   '/admin/dashboard/books/$book_id/': typeof AdminDashboardBooksBook_idIndexRoute
   '/admin/dashboard/books/new/': typeof AdminDashboardBooksNewIndexRoute
   '/admin/dashboard/books/$book_id/edit/': typeof AdminDashboardBooksBook_idEditIndexRoute
@@ -96,9 +111,11 @@ export interface FileRoutesByTo {
   '/': typeof MainIndexRoute
   '/admin': typeof AdminIndexRoute
   '/books': typeof MainBooksIndexRoute
+  '/checkout': typeof MainCheckoutIndexRoute
   '/admin/dashboard': typeof AdminDashboardIndexRoute
   '/books/$book_id': typeof MainBooksBook_idIndexRoute
   '/admin/dashboard/books': typeof AdminDashboardBooksIndexRoute
+  '/books/$book_id/preview': typeof MainBooksBook_idPreviewIndexRoute
   '/admin/dashboard/books/$book_id': typeof AdminDashboardBooksBook_idIndexRoute
   '/admin/dashboard/books/new': typeof AdminDashboardBooksNewIndexRoute
   '/admin/dashboard/books/$book_id/edit': typeof AdminDashboardBooksBook_idEditIndexRoute
@@ -110,9 +127,11 @@ export interface FileRoutesById {
   '/_main/': typeof MainIndexRoute
   '/admin/': typeof AdminIndexRoute
   '/_main/books/': typeof MainBooksIndexRoute
+  '/_main/checkout/': typeof MainCheckoutIndexRoute
   '/admin/dashboard/': typeof AdminDashboardIndexRoute
   '/_main/books/$book_id/': typeof MainBooksBook_idIndexRoute
   '/admin/dashboard/books/': typeof AdminDashboardBooksIndexRoute
+  '/_main/books/$book_id/preview/': typeof MainBooksBook_idPreviewIndexRoute
   '/admin/dashboard/books/$book_id/': typeof AdminDashboardBooksBook_idIndexRoute
   '/admin/dashboard/books/new/': typeof AdminDashboardBooksNewIndexRoute
   '/admin/dashboard/books/$book_id/edit/': typeof AdminDashboardBooksBook_idEditIndexRoute
@@ -124,9 +143,11 @@ export interface FileRouteTypes {
     | '/admin/dashboard'
     | '/admin/'
     | '/books/'
+    | '/checkout/'
     | '/admin/dashboard/'
     | '/books/$book_id/'
     | '/admin/dashboard/books/'
+    | '/books/$book_id/preview/'
     | '/admin/dashboard/books/$book_id/'
     | '/admin/dashboard/books/new/'
     | '/admin/dashboard/books/$book_id/edit/'
@@ -135,9 +156,11 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/books'
+    | '/checkout'
     | '/admin/dashboard'
     | '/books/$book_id'
     | '/admin/dashboard/books'
+    | '/books/$book_id/preview'
     | '/admin/dashboard/books/$book_id'
     | '/admin/dashboard/books/new'
     | '/admin/dashboard/books/$book_id/edit'
@@ -148,9 +171,11 @@ export interface FileRouteTypes {
     | '/_main/'
     | '/admin/'
     | '/_main/books/'
+    | '/_main/checkout/'
     | '/admin/dashboard/'
     | '/_main/books/$book_id/'
     | '/admin/dashboard/books/'
+    | '/_main/books/$book_id/preview/'
     | '/admin/dashboard/books/$book_id/'
     | '/admin/dashboard/books/new/'
     | '/admin/dashboard/books/$book_id/edit/'
@@ -199,6 +224,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDashboardIndexRouteImport
       parentRoute: typeof AdminDashboardRoute
     }
+    '/_main/checkout/': {
+      id: '/_main/checkout/'
+      path: '/checkout'
+      fullPath: '/checkout/'
+      preLoaderRoute: typeof MainCheckoutIndexRouteImport
+      parentRoute: typeof MainRoute
+    }
     '/_main/books/': {
       id: '/_main/books/'
       path: '/books'
@@ -234,6 +266,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminDashboardBooksBook_idIndexRouteImport
       parentRoute: typeof AdminDashboardRoute
     }
+    '/_main/books/$book_id/preview/': {
+      id: '/_main/books/$book_id/preview/'
+      path: '/books/$book_id/preview'
+      fullPath: '/books/$book_id/preview/'
+      preLoaderRoute: typeof MainBooksBook_idPreviewIndexRouteImport
+      parentRoute: typeof MainRoute
+    }
     '/admin/dashboard/books/$book_id/edit/': {
       id: '/admin/dashboard/books/$book_id/edit/'
       path: '/books/$book_id/edit'
@@ -247,13 +286,17 @@ declare module '@tanstack/react-router' {
 interface MainRouteChildren {
   MainIndexRoute: typeof MainIndexRoute
   MainBooksIndexRoute: typeof MainBooksIndexRoute
+  MainCheckoutIndexRoute: typeof MainCheckoutIndexRoute
   MainBooksBook_idIndexRoute: typeof MainBooksBook_idIndexRoute
+  MainBooksBook_idPreviewIndexRoute: typeof MainBooksBook_idPreviewIndexRoute
 }
 
 const MainRouteChildren: MainRouteChildren = {
   MainIndexRoute: MainIndexRoute,
   MainBooksIndexRoute: MainBooksIndexRoute,
+  MainCheckoutIndexRoute: MainCheckoutIndexRoute,
   MainBooksBook_idIndexRoute: MainBooksBook_idIndexRoute,
+  MainBooksBook_idPreviewIndexRoute: MainBooksBook_idPreviewIndexRoute,
 }
 
 const MainRouteWithChildren = MainRoute._addFileChildren(MainRouteChildren)

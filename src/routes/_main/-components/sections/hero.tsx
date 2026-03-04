@@ -38,8 +38,7 @@ export default function Hero({ className }: { className?: string }) {
                         </Button>
 
                         <Button asChild className="w-full px-8! h-14 font-bold uppercase group" variant={"secondary"}>
-                            {/* <Link to="/books/$book_id/preview" params={{ book_id: "123" }}> */}
-                            <Link to="/books/$book_id" params={{ book_id: "123" }}>
+                            <Link to="/books/$book_id/preview" params={{ book_id: "123" }}>
                                 Read Sample Chapter
                                 <MoveRight className="transition-transform group-hover:translate-x-1" />
                             </Link>

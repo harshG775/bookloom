@@ -1,3 +1,7 @@
+import { Button } from "@/components/ui/button"
+import { Link } from "@tanstack/react-router"
+import { MoveRight } from "lucide-react"
+
 export default function HeroSection() {
     return (
         <section className="relative overflow-hidden pt-20 pb-32">
@@ -16,13 +20,20 @@ export default function HeroSection() {
                     <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                         The exact system used by high-performers to reclaim 4+ hours of focus every day.
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <button className="bg-primary text-white px-8 py-5 rounded-xl font-bold text-lg hover:scale-[1.02] transition-transform shadow-xl shadow-primary/25">
-                            Get the Blueprint — $29
-                        </button>
-                        <button className="bg-white border border-gray-100 text-foreground px-8 py-5 rounded-xl font-bold text-lg hover:bg-gray-50 transition-colors">
-                            Read Free Sample
-                        </button>
+                   
+                    <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 w-full max-w-lg gap-4">
+                        <Button asChild className="w-full px-8! h-14 font-bold uppercase">
+                            <Link to="/checkout" params={{ book_id: "123" }}>
+                                Get the Book - $29
+                            </Link>
+                        </Button>
+
+                        <Button asChild className="w-full px-8! h-14 font-bold uppercase group" variant={"secondary"}>
+                            <Link to="/books/$book_id/preview" params={{ book_id: "123" }}>
+                                Read Sample Chapter
+                                <MoveRight className="transition-transform group-hover:translate-x-1" />
+                            </Link>
+                        </Button>
                     </div>
                     <div className="flex items-center justify-center lg:justify-start gap-4 text-sm text-gray-400 font-medium">
                         <span className="flex -space-x-2">
