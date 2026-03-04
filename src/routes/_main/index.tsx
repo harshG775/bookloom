@@ -10,23 +10,21 @@ export const Route = createFileRoute("/_main/")({
 
 function RouteComponent() {
     return (
-        <>
-            <Header />
-            <main className="grow pt-16">
-                <Hero />
-                <Feature />
-                <section id="about-author" className="min-h-dvh">
-                    Author Introduction Section
-                </section>
-                <section id="shop" className="min-h-dvh">
-                    Product Catalog / Essential Reading Section
-                </section>
-                <section id="testimonials" className="min-h-dvh">
-                    Testimonials Section
-                </section>
-                <section id="cta">Final Call to Action Section</section>
+        <main className="flex-1 min-h-dvh pt-16">
+            <Hero />
+            <Feature />
+            <section id="about-author" className="min-h-dvh">
+                Author Introduction Section
+            </section>
+            <section id="shop" className="min-h-dvh">
+                Product Catalog / Essential Reading Section
+            </section>
+            <section id="testimonials" className="min-h-dvh">
+                Testimonials Section
+            </section>
+            <section id="cta">Final Call to Action Section</section>
 
-                {/* <section className="py-20 px-6 lg:px-12 bg-white border-y border-stone-100">
+            {/* <section className="py-20 px-6 lg:px-12 bg-white border-y border-stone-100">
                     <div className="max-w-7xl mx-auto">
                         <div className="text-center max-w-2xl mx-auto mb-16">
                             <h2 className="text-3xl lg:text-4xl font-serif font-medium text-primary mb-4">
@@ -97,7 +95,7 @@ function RouteComponent() {
                         </div>
                     </div>
                 </section> */}
-                {/* <section className="py-24 px-6 lg:px-12 bg-paper relative overflow-hidden" id="letter">
+            {/* <section className="py-24 px-6 lg:px-12 bg-paper relative overflow-hidden" id="letter">
                     <div className="absolute inset-0 bg-grain opacity-40 pointer-events-none"></div>
                     <div className="max-w-6xl mx-auto relative z-10">
                         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -155,7 +153,7 @@ function RouteComponent() {
                         </div>
                     </div>
                 </section> */}
-                {/* <section className="py-20 px-6 lg:px-12 bg-white border-y border-stone-100" id="books">
+            {/* <section className="py-20 px-6 lg:px-12 bg-white border-y border-stone-100" id="books">
                     <div className="max-w-7xl mx-auto">
                         <div className="flex items-end justify-between mb-12 border-b border-stone-100 pb-6">
                             <div>
@@ -230,7 +228,7 @@ function RouteComponent() {
                         </div>
                     </div>
                 </section> */}
-                {/* <section className="py-24 px-6 lg:px-12 bg-stone-900 text-stone-200">
+            {/* <section className="py-24 px-6 lg:px-12 bg-stone-900 text-stone-200">
                     <div className="max-w-7xl mx-auto">
                         <div className="text-center mb-16">
                             <h2 className="text-3xl lg:text-4xl font-serif font-medium text-white mb-6">
@@ -309,7 +307,7 @@ function RouteComponent() {
                         </div>
                     </div>
                 </section> */}
-                {/* <section className="py-24 px-6 lg:px-12 bg-paper border-b border-stone-200">
+            {/* <section className="py-24 px-6 lg:px-12 bg-paper border-b border-stone-200">
                     <div className="max-w-4xl mx-auto bg-white border border-stone-200 shadow-2xl shadow-stone-200/50 rounded-2xl overflow-hidden">
                         <div className="grid md:grid-cols-2">
                             <div className="p-10 md:p-12 flex flex-col justify-center gap-6">
@@ -361,8 +359,6 @@ function RouteComponent() {
                         </div>
                     </div>
                 </section> */}
-            </main>
-            <Footer />
-        </>
+        </main>
     )
 }

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link } from "@tanstack/react-router"
-import { Menu, X, ShoppingCart } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 
@@ -9,8 +9,7 @@ export default function Header() {
 
     const navLinks = [
         { label: "Home", to: "/" },
-        { label: "Books", to: "/shop" },
-        { label: "About", to: "/about" },
+        { label: "Books", to: "/books" },
     ]
 
     return (
@@ -36,9 +35,6 @@ export default function Header() {
                             ))}
 
                             <div className="flex items-center gap-4 border-l border-border pl-8">
-                                <button className="text-foreground transition-transform hover:scale-110">
-                                    <ShoppingCart size={20} />
-                                </button>
                                 <Link
                                     to="."
                                     className={cn(

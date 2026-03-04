@@ -1,4 +1,6 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router"
+import Header from "./_main/-components/header"
+import Footer from "./_main/-components/footer"
 
 export const Route = createFileRoute("/_main")({
     component: RouteComponent,
@@ -6,8 +8,10 @@ export const Route = createFileRoute("/_main")({
 
 function RouteComponent() {
     return (
-        <div>
+        <>
+            <Header />
             <Outlet />
-        </div>
+            <Footer />
+        </>
     )
 }
